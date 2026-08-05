@@ -28,5 +28,51 @@
     "TACPLUS_SERVER_INVALID_VRF_TEST" : {
         "desc": "Tacplus server configuration with invalid VRF in TACPLUS_SERVER table.",
         "eStr": "Invalid VRF name"
+    },
+    "TACPLUS_TLS_EPSK_TEST": {
+        "desc": "TACACS TLS EPSK server and IPv4 forwarder configuration."
+    },
+    "TACPLUS_FORWARDER_IPV6_TEST": {
+        "desc": "TACACS forwarder accepts IPv6 loopback with default port."
+    },
+    "TACPLUS_TLS_MISSING_IDENTITY_TEST": {
+        "desc": "TACACS TLS EPSK configuration requires psk_identity.",
+        "eStrKey": "Mandatory"
+    },
+    "TACPLUS_TLS_MISSING_REFERENCE_TEST": {
+        "desc": "TACACS TLS EPSK configuration requires psk_secret_ref.",
+        "eStrKey": "Mandatory"
+    },
+    "TACPLUS_TLS_INVALID_REFERENCE_TEST": {
+        "desc": "TACACS TLS EPSK reference rejects path syntax.",
+        "eStr": "TACACS EPSK reference must be an opaque object ID"
+    },
+    "TACPLUS_TLS_SNI_WITHOUT_DOMAIN_TEST": {
+        "desc": "TACACS TLS SNI requires a domain name.",
+        "eStr": "TACACS TLS SNI requires domain_name"
+    },
+    "TACPLUS_TLS_PSK_ONLY_WITH_GROUPS_TEST": {
+        "desc": "TACACS TLS PSK-only mode rejects DHE groups.",
+        "eStr": "TACACS TLS psk-only mode cannot configure DHE groups"
+    },
+    "TACPLUS_TLS_INVALID_GROUP_TEST": {
+        "desc": "TACACS TLS rejects unsupported PSK-DHE groups.",
+        "eStr": "TACACS TLS PSK-DHE groups must be a colon-separated supported group list"
+    },
+    "TACPLUS_TLS_DUPLICATE_COMPATIBILITY_SERVER_TEST": {
+        "desc": "TACACS server names cannot exist in compatibility and TLS tables.",
+        "eStr": "A TACACS server name or address cannot exist in both TACPLUS_SERVER and TACPLUS_SERVER_TLS"
+    },
+    "TACPLUS_TLS_SELF_TARGET_TEST": {
+        "desc": "TACACS TLS upstream rejects the local forwarder endpoint.",
+        "eStr": "A TACACS TLS upstream cannot target the local forwarder endpoint"
+    },
+    "TACPLUS_FORWARDER_NON_LOOPBACK_TEST": {
+        "desc": "TACACS forwarder rejects non-loopback listen addresses.",
+        "eStr": "TACACS forwarder listen address must be loopback"
+    },
+    "TACPLUS_TLS_UNSUPPORTED_FIELD_TEST": {
+        "desc": "TACACS TLS rejects unsupported version-1 fields.",
+        "eStrKey": "UnknownElement"
     }
 }

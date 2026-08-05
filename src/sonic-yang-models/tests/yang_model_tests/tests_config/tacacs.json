@@ -126,6 +126,199 @@
                 ]
             }
         }
+    },
+
+    "TACPLUS_TLS_EPSK_TEST": {
+        "sonic-system-tacacs:sonic-system-tacacs": {
+            "sonic-system-tacacs:TACPLUS_FORWARDER": {
+                "global": {
+                    "local_listen_address": "127.0.0.1",
+                    "local_listen_port": 49
+                }
+            },
+            "sonic-system-tacacs:TACPLUS_SERVER_TLS": {
+                "TACPLUS_SERVER_TLS_LIST": [
+                {
+                    "ipaddress": "192.0.2.20",
+                    "priority": 48,
+                    "tcp_port": 449,
+                    "timeout": 10,
+                    "domain_name": "tacacs.example.test",
+                    "sni_enabled": true,
+                    "single_connection": true,
+                    "psk_identity": "client-identity",
+                    "psk_secret_ref": "epsk-object-01",
+                    "psk_hash": "sha-384",
+                    "psk_key_exchange": "psk-dhe",
+                    "psk_key_exchange_groups": "x25519:secp384r1"
+                }
+                ]
+            }
+        }
+    },
+
+    "TACPLUS_FORWARDER_IPV6_TEST": {
+        "sonic-system-tacacs:sonic-system-tacacs": {
+            "sonic-system-tacacs:TACPLUS_FORWARDER": {
+                "global": {
+                    "local_listen_address": "::1"
+                }
+            }
+        }
+    },
+
+    "TACPLUS_TLS_MISSING_IDENTITY_TEST": {
+        "sonic-system-tacacs:sonic-system-tacacs": {
+            "sonic-system-tacacs:TACPLUS_SERVER_TLS": {
+                "TACPLUS_SERVER_TLS_LIST": [
+                {
+                    "ipaddress": "192.0.2.21",
+                    "psk_secret_ref": "epsk-object-01"
+                }
+                ]
+            }
+        }
+    },
+
+    "TACPLUS_TLS_MISSING_REFERENCE_TEST": {
+        "sonic-system-tacacs:sonic-system-tacacs": {
+            "sonic-system-tacacs:TACPLUS_SERVER_TLS": {
+                "TACPLUS_SERVER_TLS_LIST": [
+                {
+                    "ipaddress": "192.0.2.22",
+                    "psk_identity": "client-identity"
+                }
+                ]
+            }
+        }
+    },
+
+    "TACPLUS_TLS_INVALID_REFERENCE_TEST": {
+        "sonic-system-tacacs:sonic-system-tacacs": {
+            "sonic-system-tacacs:TACPLUS_SERVER_TLS": {
+                "TACPLUS_SERVER_TLS_LIST": [
+                {
+                    "ipaddress": "192.0.2.23",
+                    "psk_identity": "client-identity",
+                    "psk_secret_ref": "../escaped-object"
+                }
+                ]
+            }
+        }
+    },
+
+    "TACPLUS_TLS_SNI_WITHOUT_DOMAIN_TEST": {
+        "sonic-system-tacacs:sonic-system-tacacs": {
+            "sonic-system-tacacs:TACPLUS_SERVER_TLS": {
+                "TACPLUS_SERVER_TLS_LIST": [
+                {
+                    "ipaddress": "192.0.2.24",
+                    "sni_enabled": true,
+                    "psk_identity": "client-identity",
+                    "psk_secret_ref": "epsk-object-01"
+                }
+                ]
+            }
+        }
+    },
+
+    "TACPLUS_TLS_PSK_ONLY_WITH_GROUPS_TEST": {
+        "sonic-system-tacacs:sonic-system-tacacs": {
+            "sonic-system-tacacs:TACPLUS_SERVER_TLS": {
+                "TACPLUS_SERVER_TLS_LIST": [
+                {
+                    "ipaddress": "192.0.2.25",
+                    "psk_identity": "client-identity",
+                    "psk_secret_ref": "epsk-object-01",
+                    "psk_key_exchange": "psk-only",
+                    "psk_key_exchange_groups": "x25519"
+                }
+                ]
+            }
+        }
+    },
+
+    "TACPLUS_TLS_INVALID_GROUP_TEST": {
+        "sonic-system-tacacs:sonic-system-tacacs": {
+            "sonic-system-tacacs:TACPLUS_SERVER_TLS": {
+                "TACPLUS_SERVER_TLS_LIST": [
+                {
+                    "ipaddress": "192.0.2.26",
+                    "psk_identity": "client-identity",
+                    "psk_secret_ref": "epsk-object-01",
+                    "psk_key_exchange_groups": "x448"
+                }
+                ]
+            }
+        }
+    },
+
+    "TACPLUS_TLS_DUPLICATE_COMPATIBILITY_SERVER_TEST": {
+        "sonic-system-tacacs:sonic-system-tacacs": {
+            "sonic-system-tacacs:TACPLUS_SERVER": {
+                "TACPLUS_SERVER_LIST": [
+                {
+                    "ipaddress": "192.0.2.27",
+                    "tcp_port": 49
+                }
+                ]
+            },
+            "sonic-system-tacacs:TACPLUS_SERVER_TLS": {
+                "TACPLUS_SERVER_TLS_LIST": [
+                {
+                    "ipaddress": "192.0.2.27",
+                    "psk_identity": "client-identity",
+                    "psk_secret_ref": "epsk-object-01"
+                }
+                ]
+            }
+        }
+    },
+
+    "TACPLUS_TLS_SELF_TARGET_TEST": {
+        "sonic-system-tacacs:sonic-system-tacacs": {
+            "sonic-system-tacacs:TACPLUS_FORWARDER": {
+                "global": {
+                    "local_listen_address": "127.0.0.1",
+                    "local_listen_port": 449
+                }
+            },
+            "sonic-system-tacacs:TACPLUS_SERVER_TLS": {
+                "TACPLUS_SERVER_TLS_LIST": [
+                {
+                    "ipaddress": "127.0.0.1",
+                    "tcp_port": 449,
+                    "psk_identity": "client-identity",
+                    "psk_secret_ref": "epsk-object-01"
+                }
+                ]
+            }
+        }
+    },
+
+    "TACPLUS_FORWARDER_NON_LOOPBACK_TEST": {
+        "sonic-system-tacacs:sonic-system-tacacs": {
+            "sonic-system-tacacs:TACPLUS_FORWARDER": {
+                "global": {
+                    "local_listen_address": "192.0.2.30"
+                }
+            }
+        }
+    },
+
+    "TACPLUS_TLS_UNSUPPORTED_FIELD_TEST": {
+        "sonic-system-tacacs:sonic-system-tacacs": {
+            "sonic-system-tacacs:TACPLUS_SERVER_TLS": {
+                "TACPLUS_SERVER_TLS_LIST": [
+                {
+                    "ipaddress": "192.0.2.28",
+                    "psk_identity": "client-identity",
+                    "psk_secret_ref": "epsk-object-01",
+                    "cipher_suites": "TLS_AES_128_GCM_SHA256"
+                }
+                ]
+            }
+        }
     }
 
 }
